@@ -7,7 +7,7 @@ and imported from `gardusi-gustavo/package-yml`.
 | --- | --- |
 | `.github/workflows/event-pull-request.yml` | `pull_request: branches: [main]` |
 | `.github/workflows/event-release.yml` | `release: types: [published]` |
-| `.github/workflows/generate.yml` | manual: one issue → one draft PR |
+| `.github/workflows/agent.yml` | `issue_comment`: `/agent code`, `/agent adjust` |
 
 There is no `ci.yml`, no `release.yml`, and no combined `pipeline.yml`.
 
@@ -147,3 +147,16 @@ over SSH, and opens a pull request. It is idempotent.
 - Never copy reusable logic into a repository.
 - Experimental and scheduled workflows stay in `package-yml`.
 - The builder may not modify `.github/workflows/**`.
+
+
+## Comment commands
+
+The agent is manual by design: only an explicit command invokes the model.
+
+| Comment | Result |
+| --- | --- |
+| `/agent code` on an issue | create `agent/issue-<n>` and a draft PR |
+| `/agent adjust <text>` on a PR | change the existing PR branch |
+
+Any other comment is ignored. At most one draft exists per issue because the
+branch is deterministic. Marking the draft ready for review triggers CI.

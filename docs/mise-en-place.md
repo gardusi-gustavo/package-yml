@@ -9,6 +9,7 @@ scheduled runs yet.
 | --- | --- | --- |
 | `.github/workflows/event-pull-request.yml` | done in 40 repos | pull-request CI |
 | `.github/workflows/event-release.yml` | done in 40 repos | release event |
+| `.github/workflows/agent.yml` | done in 39 repos | `/agent` comment |
 | `.github/CONTRIBUTING.md` | done in 39 | from `package-md` |
 | `.github/SECURITY.md` | done in 39 | from `package-md` |
 | `.github/CODE_OF_CONDUCT.md` | done in 39 | from `package-md` |
